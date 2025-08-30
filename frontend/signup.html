@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Signup</title>
+</head>
+
+<body>
+
+    <div id="signupBox">
+        <div> Sign-up</div>
+        <form class="emailPass" onsubmit="Signup()">
+            <input type="email" required placeholder="Email" id="Email">
+            <input type="password" required placeholder="Password" id="Password">
+            <button type="submit" id="signUpButton">Submit</button>
+        </form>
+    </div>
+
+    <div class="gotoHomePageDiv">
+        <button type="button" onclick="gotoHomePage()">Go to home page</button>
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    async function Signup() {
+        const email = document.getElementById("Email").value;
+        const password = document.getElementById("Password").value;
+        // now have to send request and get the respond back using axios
+
+        const respond = await axios({
+            method: "POST",
+            url: "http://localhost:3000/signup",
+            data: { username: email, password: password }
+        });
+        alert(respond.data);
+
+    }
+
+    function gotoHomePage() {
+        window.location.href = "./index.html";
+    }
+</script>
+
+</html>
