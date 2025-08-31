@@ -9,7 +9,6 @@ const user = express.Router();
 
 user.post("/register", signUpMiddleware, (req, res, next) => {
 
-    //store in db
     res.json({ message: "Signed up Successfully" });
 })
 
