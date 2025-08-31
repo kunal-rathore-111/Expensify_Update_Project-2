@@ -1,18 +1,26 @@
 
+const { storeUser } = require("../service/userService");
 const { checkInputs } = require("../validations/zod");
 
-function signUpMiddleware(req, res, next) {
+async function signUpMiddleware(req, res, next) {
 
     try {
         //zod validation
         const zodResponse = checkInputs(req.body);
         if (!zodResponse.success) {
-            return res.json({ message: "Invalid data" });
+            // map errors and return them,
+            const messages = zodResponse.error.issues.map(val => val.message);
+            return res.json({ message: messages });   // return zod errors
         }
-        next();
+        else {
+            // find in db
+            await storeUser(req.body); // if any db error catch execute, "like userAlready Exists"
+            next();
+        }
     } catch (error) {
-        console.log("error called");
-        next(error); // express own middleware
+        console.log("error called- " + error);
+        res.json({ message: error.message })
+        // next(error); // express own middleware
     }
 }
 
