@@ -1,29 +1,25 @@
 
-//libraries
+//dependencies
 const express = require("express");
+const passport = require("passport");
+
 
 //files
-const { signUpMiddleware } = require("../middlewares/auth");
-
 const user = express.Router();
-
-user.post("/register", signUpMiddleware, (req, res, next) => {
-
-    res.json({ message: "Signed up Successfully" });
-})
-
-
-user.post("/signin", (req, res, next) => {
-    res.send("Login in Successful");
-})
+const expenseRoutes = require("./expenseRoutes");
 
 
 
+user.use("/expenseRoutes", expenseRoutes);
 
-user.post("/isValid", (req, res) => {
-    const isUserFound = req.isUserFound;
-    res.json({ username: isUserFound.username });
-})
+user.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+
+user.get("/google/callback", passport.authenticate("google", { failureRedirect: "/auth/google", successRedirect: "/api/user/expenseRoutes/" }));
+
+// user.get("/", (req, res, next) => {
+//     res.send("hi");
+// })
+
 
 
 module.exports = user;

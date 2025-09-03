@@ -1,74 +1,48 @@
 
 
+const express = require("express");
+const { fetchExpensesFunction, storeExpensesFunction, deleteExpensesFunction } = require("../service/expenseService");
+const expenseRoutes = express.Router();
+
+expenseRoutes.get("/", (req, res, next) => {     // need to define middleware isLogged in
+    res.json({ message: "This is the success redirect route of google auth" });
+});
 
 
+expenseRoutes.post("/addExpense", async (req, res, next) => {
+    try {
+        const userId = req.user._id;
+        await storeExpensesFunction(userId, req.body);
+        res.json({ message: "Expense added" });
 
-
-
-
-
-
-
-
-
-
-expense.delete("/delete", (req, res) => {
-    const parseId = parseInt(req.body.parseId);
-    deleteExpense(parseId);
-    res.send("deleted");
-})
-
-
-
-
-
-
-
-
-expense.post("/add", (req, res) => {
-    const expense_name = req.body.expense_name
-    const expense_cost = req.body.expense_cost;
-    const CategoryOfExpense = req.body.CategoryOfExpense;
-
-    // now need to write the expense.json
-
-    res.send("File updated");
-})
-
-
-
-
-
-
-
-
-
-
-
-//---- Fetch data
-
-expense.get("/fetch", async (req, res) => {
-    // check does token is valid 
-    const token = req.headers.token;
-    const usernameJSON = await axios({
-        method: "POST",
-        url: "http://localhost:3000/isValid",
-        headers: { token: token }
-    });
-    if (usernameJSON.data.username) {
-        username = usernameJSON.data.username;
-        fetchExpenses();
-        userIndex = expenses.findIndex((u) => { return (u.username == username) }) // returns the index of specific user which will be used in adding expenses later
-
-        // now traverse data and find the username object matching all data
-        const expenseofSpecificUser = expenses.find((e) => { return (e.username == username) });
-        const respondExpenses = expenseofSpecificUser.expenses;
-        console.log(respondExpenses);
-        res.json({ respondExpenses: respondExpenses }); //need to change for expenses
-
+    } catch (error) {
+        console.log("error in storeExpense Route- " + error);
+        res.json({ message: error.message });
     }
-    else {
-        res.send("INVALID TOKEN or USERNAME");
+})
+
+
+expenseRoutes.get("/fetchExpenses", async (req, res, next) => {
+    try {
+        const userId = req.user._id; // after passport deserialize
+        const result = await fetchExpensesFunction(userId);
+        res.json({ expenses: result });
+    } catch (error) {
+        console.log("error in fetchexpense Route- " + error);
+        res.json({ message: error.message });
     }
 
 })
+
+expenseRoutes.delete("/deleteExpense/:expenseId", async (req, res, next) => {
+    try {
+        await deleteExpensesFunction(req.params.expenseId);
+        res.json({ message: "Expense deleted" });
+
+    } catch (error) {
+        console.log("error in deleteExpense Route- " + error);
+        res.json({ message: error.message });
+    }
+})
+
+module.exports = expenseRoutes;
