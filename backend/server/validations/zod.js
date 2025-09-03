@@ -1,8 +1,7 @@
 
-const { PassThrough } = require("stream");
 const { z } = require("zod");
 
-function checkInputs(data) {
+function checkInputsOfExpense(data) {
 
     const structure = z.object({
         username: z.string()
