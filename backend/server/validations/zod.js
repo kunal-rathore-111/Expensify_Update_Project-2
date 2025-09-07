@@ -19,4 +19,4 @@ function checkInputsOfExpense(data) {
     return structure.safeParse(data);
 }
 
-module.exports = { checkInputs };
+module.exports = { checkInputsOfExpense };

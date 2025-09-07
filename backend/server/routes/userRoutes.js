@@ -9,17 +9,10 @@ const user = express.Router();
 const expenseRoutes = require("./expenseRoutes");
 
 
-
 user.use("/expenseRoutes", expenseRoutes);
 
 user.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
 user.get("/google/callback", passport.authenticate("google", { failureRedirect: "/auth/google", successRedirect: "/api/user/expenseRoutes/" }));
-
-// user.get("/", (req, res, next) => {
-//     res.send("hi");
-// })
-
-
 
 module.exports = user;

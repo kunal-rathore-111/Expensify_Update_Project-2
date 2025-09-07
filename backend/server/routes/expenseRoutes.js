@@ -9,18 +9,6 @@ expenseRoutes.get("/", (req, res, next) => {     // need to define middleware is
 });
 
 
-expenseRoutes.post("/addExpense", async (req, res, next) => {
-    try {
-        const userId = req.user._id;
-        await storeExpensesFunction(userId, req.body);
-        res.json({ message: "Expense added" });
-
-    } catch (error) {
-        console.log("error in storeExpense Route- " + error);
-        res.json({ message: error.message });
-    }
-})
-
 
 expenseRoutes.get("/fetchExpenses", async (req, res, next) => {
     try {
@@ -33,6 +21,20 @@ expenseRoutes.get("/fetchExpenses", async (req, res, next) => {
     }
 
 })
+
+
+expenseRoutes.post("/addExpense", async (req, res, next) => {
+    try {
+        const userId = req.user._id;
+        await storeExpensesFunction(userId, req.body);
+        res.json({ message: "Expense added" });
+
+    } catch (error) {
+        console.log("error in storeExpense Route- " + error);
+        res.json({ message: error.message });
+    }
+})
+
 
 expenseRoutes.delete("/deleteExpense/:expenseId", async (req, res, next) => {
     try {
