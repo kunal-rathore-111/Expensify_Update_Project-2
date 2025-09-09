@@ -1,0 +1,11 @@
+.ErrorButton {
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
+.ErrorButton:hover {
+    background-color: rgba(26, 210, 223, 0.953);
+}
