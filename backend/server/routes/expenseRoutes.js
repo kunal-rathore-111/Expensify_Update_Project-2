@@ -14,7 +14,7 @@ expenseRoutes.get("/fetchExpenses", async (req, res, next) => {
     try {
         const userId = req.user._id; // after passport deserialize
         const result = await fetchExpensesFunction(userId);
-        res.json({ expenses: result });
+        res.json({ message: result });
     } catch (error) {
         console.log("error in fetchexpense Route- " + error);
         res.json({ message: error.message });
