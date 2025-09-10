@@ -13,127 +13,32 @@
     width: 100vw;
 }
 
-#expenses {
-    height: 70vh;
-    width: 90vw;
-    padding: 2rem;
-    background-color: rgba(18, 18, 18, 0.466);
-
-    display: flex;
-    flex-direction: row;
-    border-radius: 55px;
-    font-size: 1.4rem;
-    justify-content: space-between;
-
-
-}
-
-
-.leftDiv {
-    width: 65%;
-    overflow-y: auto;
-    /* add a scroll bar*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2% 4% 0% 6%;
-}
-
-.rightDiv {
-    width: 35%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#contentExpense {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-#delete {
-    font-size: .9rem;
-    font-weight: bold;
-    height: 35px;
-    width: 70px;
-    border-radius: 30px;
-    background-color: rgb(255, 255, 255);
-}
-
-
-#piechart {
-    background-color: #68edf6c4;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-#addExpenses {
-    font-size: 1rem;
-    font-weight: bold;
-    height: 45px;
-    width: 120px;
-    border-radius: 30px;
-    background-color: rgb(255, 255, 255);
-}
-
-#addExpenses:hover,
-#logOut:hover {
-    background-color: rgba(237, 44, 251, 0.951);
-    color: rgb(255, 255, 255);
-}
-
-.getAndaddExpensesDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.addExpensesDiv {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-}
-
-#expenseAmount,
-#expenseName {
-    height: 25px;
-    font-size: 0.9rem;
-    border: 1.5px rgb(0, 0, 0) solid;
-    border-radius: 4px;
-    padding-left: 5px;
-
-}
-
-#storeExpenses {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40px;
-}
-
-#logOut {
-    font-size: 1rem;
-    font-weight: bold;
-    height: 45px;
-    width: 120px;
-    border-radius: 30px;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-}
-
-
-
-.ErrorPage {
+.FullPage {
     height: 100vh;
     width: 100vw;
-    background-color: darkslategrey;
+    border: 5px whitesmoke solid;
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
+
+}
+
+.LeftDiv {
+    width: 50%;
+}
+
+.RightDiv {
+
+    width: 30%;
+
+}
+
+.LeftDiv,
+.RightDiv {
+    height: 75%;
+    border: 3px rgb(0, 0, 0) solid;
+    border-radius: 14px;
+    display: flex;
     justify-content: center;
-    flex-direction: column;
-    gap: 50px;
+    align-items: center;
 }
