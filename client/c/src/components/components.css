@@ -1,0 +1,32 @@
+.Expenses {
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    padding: 3%;
+}
+
+
+.LoadExpenseComponents {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.expenseComponent {
+    width: 100%;
+    display: flex;
+    padding-left: 4%;
+    padding-right: 4%;
+    justify-content: space-between;
+    border: 3px solid black;
+    align-items: center;
+}
+
+.deleteExpenseButton {
+    font-size: .9rem;
+    font-weight: bold;
+    height: 35px;
+    width: 110px;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+}

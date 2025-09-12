@@ -38,6 +38,7 @@ expenseRoutes.post("/addExpense", async (req, res, next) => {
 
 expenseRoutes.delete("/deleteExpense/:expenseId", async (req, res, next) => {
     try {
+        console.log(req.params.expenseId);
         await deleteExpensesFunction(req.params.expenseId);
         res.json({ message: "Expense deleted" });
 
