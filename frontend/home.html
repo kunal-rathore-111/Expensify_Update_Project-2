@@ -54,13 +54,32 @@
         async function fetchExpenses() {
             // DOM concept
             const token = localStorage.getItem("token");
-            const respond = await axios({
-                url: "http://localhost:3000/home/fetch",
-                method: "GET",
-                headers: { token: token }
-            });
+            const respond = {
+                "message": [
+                    {
+                        "_id": "68bdf37eb4b71a6b10477cc3",
+                        "userId": "68bdf21610e679ba67557e58",
+                        "expenseTitle": "rf",
+                        "expenseDiscription": "dfg, dfgd dfg dfg",
+                        "category": "rg+",
+                        "createdAt": "2025-09-07T21:05:02.267Z",
+                        "updatedAt": "2025-09-07T21:05:02.267Z",
+                        "__v": 0
+                    },
+                    {
+                        "_id": "68c0967a366da157471a84ee",
+                        "userId": "68bdf21610e679ba67557e58",
+                        "expenseTitle": "rf",
+                        "expenseDiscription": "dfg, dfgd dfg dfg",
+                        "category": "rg+",
+                        "createdAt": "2025-09-09T21:04:58.466Z",
+                        "updatedAt": "2025-09-09T21:04:58.466Z",
+                        "__v": 0
+                    }
+                ]
+            }
 
-            const expenses = respond.data.respondExpenses; // store the 'array of Objects of expenses' from respondExpenses
+            const expenses = respond.message; // store the 'array of Objects of expenses' from respondExpenses
 
             // store that all expense in html
             const element = document.getElementById("storeExpenses");

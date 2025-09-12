@@ -9,9 +9,9 @@ const users = new mongoose.Schema({
 
 const expenses = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "usersModel" },
-    expenseTitle: { type: String, required: true },
-    expenseDiscription: { type: String },
-    category: { type: String, required: true }   // need to add enum for category 
+    title: { type: String, required: true },
+    category: { type: String, required: true },   // need to add enum for category 
+    amount: { type: Number, required: true }
 }, { timestamps: true });
 
 const usersModel = mongoose.model("usersModel", users);

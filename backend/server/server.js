@@ -14,11 +14,11 @@ connectDb();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors({ origin: "http://localhost:5173", credentials: true, }));
 //session
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
+    saveUninitialized: false,
     resave: false,
     cookie: {
         httpOnly: true,

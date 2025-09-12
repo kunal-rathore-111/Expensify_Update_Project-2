@@ -1,6 +1,5 @@
-import { createContext, useContext } from 'react';
 import './expenses.css';
-import {DataContextProvider, ShowExpenses } from './showComponents';
+import {LeftDiv } from '../components/showComponents';
 
 export const ExpensePage = () => {
 
@@ -18,15 +17,6 @@ export const ExpensePage = () => {
 
 
 
-function LeftDiv() {
-  return <div className='LeftDiv'>
-        <DataContextProvider>
-          <ShowExpenses></ShowExpenses>
-        </DataContextProvider>
-  <div className='Expenses'></div>
-    </div>
-
-}
 
 
 

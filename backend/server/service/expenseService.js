@@ -14,12 +14,12 @@ async function fetchExpensesFunction(userId) {
 
 async function storeExpensesFunction(userId, data) {
 
-    const { expenseTitle, expenseDiscription, category } = data;
+    const { title, amount, category } = data;
 
     const result = await expensesModel.create(
         {
-            expenseTitle: expenseTitle,
-            expenseDiscription: expenseDiscription,
+            title: title,
+            amount: amount,
             category: category,
             userId: userId
         });
@@ -33,7 +33,6 @@ async function storeExpensesFunction(userId, data) {
 
 
 async function deleteExpensesFunction(expenseId) {
-
 
     const isDeleted = await expensesModel.deleteOne(
         {
