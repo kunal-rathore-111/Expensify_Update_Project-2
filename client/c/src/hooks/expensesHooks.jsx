@@ -3,16 +3,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export function useFetch(url, method) {
-    const [data, setData] = useState();
+export function useExpense() {
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
     async function getData() {
 
         setLoading(true);
         const response = await axios({
-            url: url,
-            method: method,
+            url: "http://localhost:3000/api/user/expenseRoutes/fetchExpenses",
+            method: "GET",
             withCredentials: true
         });
         const finalData = response.data; // it will have raw array of objects
@@ -22,18 +22,36 @@ export function useFetch(url, method) {
     }
     useEffect(() => {
         getData();
-    }, [url]);
+    }, []);
 
     async function deleteExpense(expenseId) {
+        console.log(expenseId);
 
         await axios({
             method: "DELETE",
             url: "http://localhost:3000/api/user/expenseRoutes/deleteExpense/" + expenseId
         });
-
         getData();
-
     }
-    return { data, loading, deleteExpense };
+
+    async function addExpense(expense) {
+
+        await fetch("http://localhost:3000/api/user/expenseRoutes/addExpense",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(expense),
+                credentials: "include",
+
+            });
+        getData();
+    }
+
+
+
+
+    return { data, loading, deleteExpense, addExpense };
 }
 

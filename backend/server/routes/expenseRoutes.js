@@ -30,7 +30,7 @@ expenseRoutes.post("/addExpense", async (req, res, next) => {
         res.json({ message: "Expense added" });
 
     } catch (error) {
-        console.log("error in storeExpense Route- " + error);
+        console.log("error in addExpense Route- " + error);
         res.json({ message: error.message });
     }
 })
