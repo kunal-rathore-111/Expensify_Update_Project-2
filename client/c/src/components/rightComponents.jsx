@@ -5,10 +5,14 @@ import { DataContext } from "../contexts/dataContext"
 
 import "./rightComponenets.css";
 
+import { ShowPie } from "./pieChart";
+
 export function RightDiv() {
     return <div className='RightDiv1'>
         <div className="RightDiv2">
-            {/* pie chart */}
+
+            <ShowPie />
+
             <AddExpenses></AddExpenses>
         </div>
     </div>
@@ -30,8 +34,9 @@ function AddExpenses() {
     return <>
         <div className="AddExpenses">
             <div className="AddExpenseInputs">
+
                 <input value={title} onChange={(e) => { setTitle(e.target.value) }} type="text" placeholder="Enter Expense" required />
-                <br />
+
                 <input value={amount} onChange={(e) => { setAmount(e.target.value) }} type="number" placeholder="Enter Value" required />
 
                 <select name="category" value={category} onChange={(e) => { setCategory(e.target.value) }}>
@@ -49,3 +54,9 @@ function AddExpenses() {
 
     </>
 }
+
+
+
+
+
+
