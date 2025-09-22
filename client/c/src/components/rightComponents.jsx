@@ -33,13 +33,13 @@ function AddExpenses() {
 
     return <>
         <div className="AddExpenses">
-            <div className="AddExpenseInputs">
+            <form className="AddExpenseInputs">
 
                 <input value={title} onChange={(e) => { setTitle(e.target.value) }} type="text" placeholder="Enter Expense" required />
 
                 <input value={amount} onChange={(e) => { setAmount(e.target.value) }} type="number" placeholder="Enter Value" required />
 
-                <select name="category" value={category} onChange={(e) => { setCategory(e.target.value) }}>
+                <select name="category" value={category} onChange={(e) => { setCategory(e.target.value) }} required>
                     <option value="">-- Select Category --</option>
                     <option value="Housing">Housing</option>
                     <option value="Food">Food</option>
@@ -49,7 +49,7 @@ function AddExpenses() {
                 </select>
 
                 <button onClick={callAddExpense}>Add Expense</button>
-            </div>
+            </form>
         </div>
 
     </>
