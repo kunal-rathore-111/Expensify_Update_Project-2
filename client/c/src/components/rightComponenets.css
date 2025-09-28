@@ -1,6 +1,9 @@
 .RightDiv2 {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .AddExpenses {
@@ -11,7 +14,7 @@
 }
 
 .AddExpenseInputs {
-    width: 300px;
+    width: 250px;
     height: 300px;
     display: flex;
     flex-direction: column;

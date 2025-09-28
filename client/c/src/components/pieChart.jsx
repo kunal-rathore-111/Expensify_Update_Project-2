@@ -27,7 +27,7 @@ export function ShowPie() {
     })
     console.log(AmountByCategory_Array);
 
-    const colors = ["#fd1515ff", "#15cffdff", "#3fff4fff", "#fd15acff", "#707070ff"]
+    const colors = ["#8236d9db", "#22f822d9", "#5b44d1d9", "#fdf115cd", "#ff3737d1"]
 
     return <div style={{ height: "290px", width: "100%" }}>
 
