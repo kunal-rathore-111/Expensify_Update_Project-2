@@ -1,11 +1,11 @@
 .ExpensePage {
-    background-color: #4ca1bee0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'chillax';
-    font-weight: 450;
+    width: 100vw;
+    height: 100vh;
+
 }
 
 .page {
@@ -14,12 +14,28 @@
 }
 
 .FullPage {
-    height: 100vh;
-    width: 100vw;
-    border: 5px whitesmoke solid;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+@media screen and (max-width:950px) {
+    .FullPage {
+        flex-direction: column;
+        gap: 40px;
+        min-width: 540px;
+    }
+
+    .LeftDiv {
+        min-height: 60vh;
+        margin-top: 40px;
+    }
+
+    .RightDiv1 {
+        height: 30vh;
+    }
 
 }
 
