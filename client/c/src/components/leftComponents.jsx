@@ -23,20 +23,23 @@ function ShowExpenses() {
 }
 
 function loadData(messages) {
-    return <td className="LoadExpenseComponents" >
-        <tr className="expenseComponent">
-            <div style={{ width: "40%", display: "flex", justifyContent: "center" }}> Title</div>
-            <span style={{ width: "40%", display: "flex", justifyContent: "center" }}>Amount</span>
-            <div style={{ width: "15%", display: "flex", justifyContent: "center" }}>Delete</div>
+    return <table style={{ width: '100%' }}>
+
+        <tr className="expenseComponent" style={{ width: "97%", display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
+            <div > Title</div>
+            <span >Amount</span>
+            <div>Delete</div>
         </tr>
-        {
-            messages.map((d) => {
-                return <DesignedExpenses
-                    title={d.title} category={d.category} amount={d.amount} key={d._id} _id={d._id}>
-                </DesignedExpenses>
-            })
-        }
-    </td >
+        <td className="LoadExpenseComponents" >
+            {
+                messages.map((d) => {
+                    return <DesignedExpenses
+                        title={d.title} category={d.category} amount={d.amount} key={d._id} _id={d._id}>
+                    </DesignedExpenses>
+                })
+            }
+        </td >
+    </table >
 }
 
 function DesignedExpenses(props) {
@@ -44,10 +47,10 @@ function DesignedExpenses(props) {
     const { deleteExpense } = useContext(DataContext);
 
 
-    return <tr className="expenseComponent" style={{ width: "100%", display: "flex", justifyContent: "space-evenly" }}>
-        <div style={{ width: "40%", display: "flex", justifyContent: "center" }}> {props.title}</div>
-        <span style={{ width: "40%", display: "flex", justifyContent: "center" }}> {props.amount}</span>
-        <button className="deleteExpenseButton"
+    return <tr className="expenseComponent" style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
+        <div style={{ width: "35%" }} > {props.title}</div>
+        <span style={{ width: "30%" }} > {props.amount}</span>
+        <button className="deleteExpenseButton" style={{ width: "20%" }}
             onClick={() => { deleteExpense(props._id) }} >
             Delete  </button>
     </tr>
