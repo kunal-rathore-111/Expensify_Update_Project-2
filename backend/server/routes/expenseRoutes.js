@@ -12,7 +12,10 @@ expenseRoutes.get("/", (req, res, next) => {     // need to define middleware is
 
 expenseRoutes.get("/fetchExpenses", async (req, res, next) => {
     try {
-        const userId = req.user._id; // after passport deserialize
+        const userId = req.user?._id; // after passport deserialize
+        if (!userId) {
+            res.status(404).json({ message: "NOt found" });
+        }
         const result = await fetchExpensesFunction(userId);
         res.json({ message: result });
     } catch (error) {
