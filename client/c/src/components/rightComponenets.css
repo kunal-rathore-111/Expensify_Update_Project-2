@@ -1,5 +1,5 @@
 .RightDiv2 {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -9,6 +9,12 @@
 .chartSection {
     padding: 16px 20px;
     border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* center chart horizontally */
+    justify-content: center;
+    /* center chart vertically inside the section */
 }
 
 .chartSection h3 {
@@ -106,10 +112,35 @@
     transform: translateY(0);
 }
 
+/* New constrained container for the pie chart to prevent overlap and ensure centering */
+.chartContainer {
+    width: 100%;
+    max-width: 380px;
+    /* prevents chart from growing too wide */
+    height: 220px;
+    /* fixed visual height for the chart area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure the inner svg/canvas stretches correctly when ShowPie renders an element */
+.chartContainer>* {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
 @media (max-width: 768px) {
 
     .chartSection,
     .AddExpenses {
         padding: 20px;
+    }
+
+    .chartContainer {
+        max-width: 100%;
+        height: 160px;
+        /* smaller height on mobile */
     }
 }

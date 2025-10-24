@@ -46,7 +46,8 @@
     min-height: calc(100vh - 140px);
 }
 
-@media screen and (max-width: 1200px) {
+
+@media screen and (max-width: 768px) {
     .FullPage {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -55,9 +56,7 @@
     .RightDiv1 {
         order: -1;
     }
-}
 
-@media screen and (max-width: 768px) {
     .ExpensePage {
         padding: 16px;
     }
