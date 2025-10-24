@@ -1,4 +1,3 @@
-
 import { useContext, useState } from "react"
 
 import { DataContext } from "../contexts/dataContext"
@@ -10,11 +9,16 @@ import { ShowPie } from "./pieChart";
 export function RightDiv() {
     return <div className='RightDiv1'>
         <div className="RightDiv2">
-
-            <div style={{ height: "290px", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px" }}>
-                <ShowPie />
+            <div className="chartSection">
+                <h3>Spending by Category</h3>
+                <div style={{ height: "180px", width: "100%" }}>
+                    <ShowPie />
+                </div>
             </div>
-            <AddExpenses></AddExpenses>
+            <div className="AddExpenses">
+                <h3>Add New Expense</h3>
+                <AddExpenses></AddExpenses>
+            </div>
         </div>
     </div>
 }
@@ -32,28 +36,54 @@ function AddExpenses() {
         addExpense({ title, amount, category });
     }
 
-    return <>
-        <div className="AddExpenses">
-            <form className="AddExpenseInputs">
+    return (
+        <form className="AddExpenseInputs" onSubmit={(e) => { e.preventDefault(); callAddExpense(); }}>
+            <div className="inputGroup">
+                <label htmlFor="expenseTitle">Expense Title</label>
+                <input
+                    id="expenseTitle"
+                    value={title}
+                    onChange={(e) => { setTitle(e.target.value) }}
+                    type="text"
+                    placeholder="e.g., Groceries, Rent"
+                    required
+                />
+            </div>
 
-                <input value={title} onChange={(e) => { setTitle(e.target.value) }} type="text" placeholder="Enter Expense" required style={{ width: "200px" }} />
+            <div className="inputGroup">
+                <label htmlFor="expenseAmount">Amount ($)</label>
+                <input
+                    id="expenseAmount"
+                    value={amount}
+                    onChange={(e) => { setAmount(e.target.value) }}
+                    type="number"
+                    step="0.01"
+                    placeholder="0.00"
+                    required
+                />
+            </div>
 
-                <input value={amount} onChange={(e) => { setAmount(e.target.value) }} type="text" placeholder="Enter Value" required style={{ width: "200px" }} />
-
-                <select name="category" value={category} onChange={(e) => { setCategory(e.target.value) }} required>
-                    <option value="">-- Select Category --</option>
+            <div className="inputGroup">
+                <label htmlFor="expenseCategory">Category</label>
+                <select
+                    id="expenseCategory"
+                    name="category"
+                    value={category}
+                    onChange={(e) => { setCategory(e.target.value) }}
+                    required
+                >
+                    <option value="">Select a category</option>
                     <option value="Housing">Housing</option>
                     <option value="Food">Food</option>
                     <option value="Transportation">Transportation</option>
-                    <option value="Utilites">Utilites</option>
+                    <option value="Utilities">Utilities</option>
                     <option value="Education">Education</option>
                 </select>
+            </div>
 
-                <button onClick={callAddExpense}>Add Expense</button>
-            </form>
-        </div>
-
-    </>
+            <button type="submit">Add Expense</button>
+        </form>
+    )
 }
 
 

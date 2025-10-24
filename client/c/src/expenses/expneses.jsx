@@ -6,10 +6,15 @@ import { RightDiv } from '../components/rightComponents';
 import { DataContextProvider } from '../contexts/dataContext';
 
 export const ExpensePage = () => {
-
   return (
     <div className="ExpensePage page">
       <DataContextProvider>
+        <div className="pageHeader">
+          <h1>💰 Expense Tracker</h1>
+          <div className="userInfo">
+            <span>Manage your finances with ease</span>
+          </div>
+        </div>
         <div className='FullPage'>
           <LeftDiv />
           <RightDiv />

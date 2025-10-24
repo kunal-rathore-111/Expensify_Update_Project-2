@@ -1,48 +1,205 @@
 .Expenses {
-    height: 100%;
+    height: 100vh;
     width: 100%;
-    font-size: 18px;
-    padding: 3%;
-
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    overflow: hidden;
 }
 
+.expensesHeader {
+    padding: 8px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.expensesHeader h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 2px 0;
+}
+
+.expensesHeader .totalAmount {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
 
 .LoadExpenseComponents {
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 12px 20px;
+}
+
+.expenseTableHeader {
+    display: grid;
+    grid-template-columns: 2fr 1fr 100px;
+    gap: 12px;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
 }
 
 .expenseComponent {
-    width: 100%;
-    display: flex;
-    padding-left: 4%;
-    padding-right: 4%;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr 100px;
+    gap: 12px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 8px;
     align-items: center;
+    transition: all 0.3s ease;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.expenseComponent:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.expenseTitle {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.expenseCategory {
+    font-size: 11px;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.expenseAmount {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 15px;
 }
 
 .deleteExpenseButton {
-    font-size: .9rem;
-    font-weight: bold;
-    height: 35px;
-    width: 110px;
-    border-radius: 30px;
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
 }
 
+.deleteExpenseButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.deleteExpenseButton:active {
+    transform: translateY(0);
+}
+
+.emptyState {
+    text-align: center;
+    padding: 40px 20px;
+    color: #94a3b8;
+}
+
+.emptyState svg {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.emptyState h3 {
+    font-size: 15px;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.emptyState p {
+    font-size: 13px;
+}
 
 .LeftDiv::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
 }
 
+.LeftDiv::-webkit-scrollbar-track {
+    background: transparent;
+}
 
 .LeftDiv::-webkit-scrollbar-thumb {
-    background-color: #ffffff;
-    border-radius: 10px;
-    border: 2px solid #00ffff;
+    background: #cbd5e1;
+    border-radius: 3px;
+}
 
+.LeftDiv::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.LoadExpenseComponents::-webkit-scrollbar {
+    width: 8px;
+}
+
+.LoadExpenseComponents::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.LoadExpenseComponents::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.LoadExpenseComponents::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+@media (max-width: 768px) {
+
+    .expenseTableHeader,
+    .expenseComponent {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .expensesHeader {
+        padding: 20px;
+    }
+
+    .LoadExpenseComponents {
+        padding: 12px;
+    }
+
+    .deleteExpenseButton {
+        width: 100%;
+    }
 }

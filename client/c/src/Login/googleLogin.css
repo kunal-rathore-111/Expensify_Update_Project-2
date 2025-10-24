@@ -1,103 +1,205 @@
 .GoogleLoginPage {
-    background-color: rgb(0, 0, 0);
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.page {
-    height: 100vh;
-    width: 100vw;
+.GoogleLoginPage::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -250px;
+    right: -250px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.GoogleLoginPage::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: -150px;
+    left: -150px;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.05);
+    }
 }
 
 .herodiv {
-    border: 3px solid whitesmoke;
-    height: 99vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 60px 80px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 480px;
+    width: 90%;
+    position: relative;
+    z-index: 1;
+    animation: slideUp 0.6s ease-out;
 }
 
-.googleLink_and_googleLogo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .welcomeMessage {
-    color: whitesmoke;
-    font-size: 38px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #1e293b;
+    font-size: 42px;
+    font-weight: 700;
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.herodiv .subtitle {
+    color: #64748b;
+    font-size: 16px;
+    margin-bottom: 40px;
+    font-weight: 400;
 }
 
 .login_with_googleDiv {
-    height: auto;
-    width: auto;
+    margin-top: 40px;
+}
 
+.googleLink_and_googleLogo {
+    list-style: none;
+}
+
+.googleLink_and_googleLogo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.googleLink_and_googleLogo a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: left 0.5s ease;
+}
+
+.googleLink_and_googleLogo a:hover::before {
+    left: 100%;
+}
+
+.googleLink_and_googleLogo a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+}
+
+.googleLink_and_googleLogo a:active {
+    transform: translateY(-1px);
 }
 
 .googleLogoDiv {
     height: 48px;
     width: 48px;
-    border-bottom: 3px solid white;
+    background: white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 8px;
+    flex-shrink: 0;
 }
 
 .googleLogoImage {
     height: 100%;
     width: 100%;
+    object-fit: contain;
 }
 
-a {
-    font-size: 22px;
-    font-weight: 500;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
+/* Logout Styles */
 .LogoutLink {
     text-decoration: none;
 }
 
 .logOut_text {
+    color: #ef4444;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.logOut_text:hover {
+    color: #dc2626;
     text-decoration: underline;
 }
 
-
-
-
-
-/*  */
-
 .username {
-    color: whitesmoke;
-}
-
-.material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-}
-
-.logOutIcon {
-    color: whitesmoke;
+    color: #1e293b;
+    font-weight: 600;
 }
 
 .googleLogoDivForLogOut {
-    text-decoration: none;
-
     height: 48px;
     width: 48px;
-    border: 3px solid white;
+    border: 3px solid #667eea;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.googleLogoDivForLogOut:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 640px) {
+    .herodiv {
+        padding: 40px 30px;
+    }
+    
+    .welcomeMessage {
+        font-size: 32px;
+    }
+    
+    .googleLink_and_googleLogo a {
+        font-size: 16px;
+        padding: 14px 24px;
+    }
 }
