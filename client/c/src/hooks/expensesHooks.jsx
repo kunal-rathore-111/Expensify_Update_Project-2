@@ -2,23 +2,36 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export function useExpense() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const navigate = useNavigate();
     async function getData() {
 
         setLoading(true);
-        const response = await axios({
-            url: "http://localhost:3000/api/user/expenseRoutes/fetchExpenses",
-            method: "GET",
-            withCredentials: true
-        });
-        const finalData = response.data; // it will have raw array of objects
-        console.log(finalData);
-        setData(finalData);
-        setLoading(false);
+        try {
+
+            const response = await axios({
+                url: "http://localhost:3000/api/user/expenseRoutes/fetchExpenses",
+                method: "GET",
+                withCredentials: true
+            });
+            const finalData = response.data; // it will have raw array of objects
+            console.log(finalData);
+            setData(finalData);
+            setLoading(false);
+        }
+        catch (err) {
+            if (err.status === 404) {
+                navigate("/")
+            }
+            else {
+                alert("something went wrong");
+            }
+
+        }
     }
     useEffect(() => {
         getData();
