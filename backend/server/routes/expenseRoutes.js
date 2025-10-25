@@ -14,7 +14,7 @@ expenseRoutes.get("/fetchExpenses", async (req, res, next) => {
     try {
         const userId = req.user?._id; // after passport deserialize
         if (!userId) {
-            res.status(404).json({ message: "NOt found" });
+            res.status(404).json({ message: "UserId not found" });
         }
         const result = await fetchExpensesFunction(userId);
         res.json({ message: result });

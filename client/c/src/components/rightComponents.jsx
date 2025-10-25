@@ -11,7 +11,7 @@ export function RightDiv() {
         <div className="RightDiv2">
             <div className="chartSection">
                 <h3>Spending by Category</h3>
-                <div style={{ height: "180px", width: "100%" }}>
+                <div className="chartContainer">
                     <ShowPie />
                 </div>
             </div>
