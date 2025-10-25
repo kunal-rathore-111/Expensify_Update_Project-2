@@ -14,7 +14,7 @@ export function useExpense() {
         try {
 
             const response = await axios({
-                url: "http://localhost:3000/api/user/expenseRoutes/fetchExpenses",
+                url: "https://expensify-e2oa.onrender.com/api/user/expenseRoutes/fetchExpenses",
                 method: "GET",
                 withCredentials: true
             });
@@ -42,14 +42,14 @@ export function useExpense() {
 
         await axios({
             method: "DELETE",
-            url: "http://localhost:3000/api/user/expenseRoutes/deleteExpense/" + expenseId
+            url: "https://expensify-e2oa.onrender.com/api/user/expenseRoutes/deleteExpense/" + expenseId
         });
         getData();
     }
 
     async function addExpense(expense) {
 
-        await fetch("http://localhost:3000/api/user/expenseRoutes/addExpense",
+        await fetch("https://expensify-e2oa.onrender.com/api/user/expenseRoutes/addExpense",
             {
                 method: "POST",
                 headers: {

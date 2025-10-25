@@ -23,7 +23,7 @@ app.use(session({
     cookie: {
         httpOnly: true,
         secure: process.env.COOKIE_SECURE === "production",
-        sameSite: "lax",
+        sameSite: "strict",
         maxAge: 1000 * 60 * 60 * 24 * 7 // after 7days session will be invaid (user log out)
     }
 }));
