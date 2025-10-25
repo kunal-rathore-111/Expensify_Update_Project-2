@@ -4,6 +4,7 @@ const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
 
+const frontendUrl = process.env.frontend_Url;
 
 //files
 const user = require("./routes/userRoutes");
@@ -18,7 +19,7 @@ const app = express();
 app.set("trust proxy", 1);
 
 app.use(express.json());
-app.use(cors({ origin: "https://expensify-xyz.netlify.app", credentials: true, }));
+app.use(cors({ origin: `${frontendUrl}`, credentials: true, }));
 //session
 app.use(session({
     secret: process.env.SESSION_SECRET,

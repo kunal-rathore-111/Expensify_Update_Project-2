@@ -10,11 +10,13 @@ export function useExpense() {
     const navigate = useNavigate();
     async function getData() {
 
+        const backendUrl = process.env.backend_Url;
+
         setLoading(true);
         try {
 
             const response = await axios({
-                url: "https://expensify-e2oa.onrender.com/api/user/expenseRoutes/fetchExpenses",
+                url: `${backendUrl}/user/expenseRoutes/fetchExpenses`,
                 method: "GET",
                 withCredentials: true
             });
@@ -43,14 +45,14 @@ export function useExpense() {
 
         await axios({
             method: "DELETE",
-            url: "https://expensify-e2oa.onrender.com/api/user/expenseRoutes/deleteExpense/" + expenseId
+            url: `${backendUrl}/user/expenseRoutes/deleteExpense/${expenseId}`
         });
         getData();
     }
 
     async function addExpense(expense) {
 
-        await fetch("https://expensify-e2oa.onrender.com/api/user/expenseRoutes/addExpense",
+        await fetch(`${backendUrl}/user/expenseRoutes/addExpense`,
             {
                 method: "POST",
                 headers: {

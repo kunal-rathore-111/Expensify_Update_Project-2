@@ -2,7 +2,7 @@
 const express = require('express');
 const passport = require('passport');
 
-const frontendUrl = `https://expensify-xyz.netlify.app`;
+const frontendUrl = process.env.frontend_Url;
 
 //files
 const user = express.Router();
