@@ -2,6 +2,8 @@
 const express = require('express');
 const passport = require('passport');
 
+const frontendUrl = `https://expensify-xyz.netlify.app`;
+
 //files
 const user = express.Router();
 const expenseRoutes = require('./expenseRoutes');
@@ -14,7 +16,7 @@ user.get(
   '/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/auth/google',
-    successRedirect: 'https://expensify-e2oa.onrender.com/api/user/expenses',
+    successRedirect: `${frontendUrl}/api/user/expenses`,
   })
 );
 
