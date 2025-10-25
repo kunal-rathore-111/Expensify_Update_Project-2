@@ -10,7 +10,7 @@ export function useExpense() {
     const navigate = useNavigate();
     async function getData() {
 
-        const backendUrl = import.meta.env.backend_Url;
+        const backendUrl = import.meta.env.VITE_backend_Url;
 
         setLoading(true);
         try {
