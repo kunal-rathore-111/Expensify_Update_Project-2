@@ -14,13 +14,13 @@ expenseRoutes.get("/fetchExpenses", async (req, res, next) => {
     try {
         const userId = req.user?._id; // after passport deserialize
         if (!userId) {
-            res.status(404).json({ message: "UserId not found" });
+            return res.status(404).json({ message: "UserId not found" });
         }
         const result = await fetchExpensesFunction(userId);
-        res.json({ message: result });
+        return res.json({ message: result });
     } catch (error) {
         console.log("error in fetchexpense Route- " + error);
-        res.json({ message: error.message });
+        return res.json({ message: error.message });
     }
 
 })

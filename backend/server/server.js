@@ -13,6 +13,10 @@ require("./config/passport");
 connectDb();
 
 const app = express();
+
+// trust proxy so secure cookies work behind a reverse proxy (Render, Heroku, etc.)
+app.set("trust proxy", 1);
+
 app.use(express.json());
 app.use(cors({ origin: "https://expensify-xyz.netlify.app", credentials: true, }));
 //session
