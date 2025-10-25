@@ -10,7 +10,7 @@ export function useExpense() {
     const navigate = useNavigate();
     async function getData() {
 
-        const backendUrl = process.env.backend_Url;
+        const backendUrl = import.meta.env.backend_Url;
 
         setLoading(true);
         try {
