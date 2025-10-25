@@ -25,6 +25,7 @@ export function useExpense() {
         }
         catch (err) {
             if (err.status === 404) {
+                alert("Please login again");
                 navigate("/")
             }
             else {
