@@ -35,7 +35,7 @@ app.use(passport.session());
 
 const PORT = process.env.PORT;
 app.use('/', (req, res) => {
-    res.send({ messgae: "Message form / route " })
+    res.json({ messgae: "Message form / route " })
 })
 app.use("/api/user", user);
 
