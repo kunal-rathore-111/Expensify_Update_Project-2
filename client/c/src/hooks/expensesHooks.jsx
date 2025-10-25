@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const backendUrl = import.meta.env.VITE_backend_Url;
 export function useExpense() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     async function getData() {
 
-        const backendUrl = import.meta.env.VITE_backend_Url;
 
         setLoading(true);
         try {
