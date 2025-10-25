@@ -34,10 +34,11 @@ app.use(passport.session());
 
 
 const PORT = process.env.PORT;
+app.use("/api/user", user);
+
 app.use('/', (req, res) => {
     res.json({ messgae: "Message form / route " })
 })
-app.use("/api/user", user);
 
 
 app.listen(PORT, () => { console.log("Server started") });
