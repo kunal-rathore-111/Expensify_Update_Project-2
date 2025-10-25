@@ -14,7 +14,7 @@ user.get(
   '/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/auth/google',
-    successRedirect: 'http://localhost:5173/api/user/expenses',
+    successRedirect: 'https://expensify-e2oa.onrender.com/api/user/expenses',
   })
 );
 

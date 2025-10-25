@@ -12,7 +12,7 @@ export const GoogleLogin = () => {
 
         <div className="login_with_googleDiv">
           <ul className="googleLink_and_googleLogo">
-            <a href="http://localhost:3000/api/user/auth/google">
+            <a href="https://expensify-e2oa.onrender.com/api/user/auth/google">
               <div className="googleLogoDiv">
                 <img src={accountImage} className="googleLogoImage" alt="Google" />
               </div>
