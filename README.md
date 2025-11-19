@@ -2,6 +2,11 @@
 
 A full-stack expense tracking application built with React and Node.js that helps users manage their finances effortlessly. Features Google OAuth authentication, real-time expense management, and visual analytics with interactive charts.
 
+## 🚀 Demo
+https://expensify-update-project-2-frontend.vercel.app
+
+![Logo](images/logo.png)
+
 ## 🌟 Features
 
 - **Google OAuth Authentication**: Secure login using Google accounts
