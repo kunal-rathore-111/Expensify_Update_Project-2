@@ -5,7 +5,7 @@ A full-stack expense tracking application built with React and Node.js that help
 ## 🚀 Demo
 https://expensify-update-project-2-frontend.vercel.app
 
-![Logo](images/logo.png)
+![Logo](logo.png)
 
 ## 🌟 Features
 
